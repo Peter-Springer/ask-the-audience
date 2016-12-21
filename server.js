@@ -30,6 +30,7 @@ io.on('connection', function (socket) {
     if (channel === 'voteCast') {
       votes[socket.id] = message;
        socket.emit('voteCount', countVotes(votes));
+       socket.emit('statusMessage', `You voted for: ${message}`)
     }
   });
   socket.on('disconnect', function () {
